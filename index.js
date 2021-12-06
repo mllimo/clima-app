@@ -1,5 +1,7 @@
 const io = require('./helpers/io');
 const Searches = require('./helpers/searches');
+require('dotenv').config()
+
 async function main() {
   let option;
   let searches = new Searches;
@@ -8,7 +10,8 @@ async function main() {
     switch (option) {
       case 1:
         let place = await io.readInput('City: ');
-        await searches.city(place);
+        let places = await searches.city(place);
+        console.log(places);
         break;
     }
     if (option !== 0) await io.pause();
