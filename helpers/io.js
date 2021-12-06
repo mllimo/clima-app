@@ -3,23 +3,23 @@ require('colors');
 
 const questions = [
   {
-      type: 'list',
-      name: 'option',
-      message: 'What do you want to do?',
-      choices: [
-          {
-              value: '1',
-              name: `${ '1.'.green } Search city`
-          },
-          {
-              value: '2',
-              name: `${ '2.'.green } History`
-          },
-          {
-              value: '0',
-              name: `${ '0.'.green } Exit`
-          }
-      ]
+    type: 'list',
+    name: 'option',
+    message: 'What do you want to do?',
+    choices: [
+      {
+        value: 1,
+        name: `${'1.'.green} Search city`
+      },
+      {
+        value: 2,
+        name: `${'2.'.green} History`
+      },
+      {
+        value: 0,
+        name: `${'0.'.green} Exit`
+      }
+    ]
   }
 ];
 
@@ -27,7 +27,7 @@ async function showMenu() {
 
   console.clear();
   console.log('=========================='.green);
-  console.log('  Choose an option'.white );
+  console.log('  Choose an option'.white);
   console.log('==========================\n'.green);
 
   const { option } = await inquirer.prompt(questions);
@@ -55,7 +55,21 @@ async function readInput(message) {
   return desc;
 }
 
+async function pause() {
+  const question = [
+    {
+      type: 'input',
+      name: 'enter',
+      message: `Press ${'enter'.green} to continue.`
+    }
+  ];
+
+  console.log('\n');
+  await inquirer.prompt(question);
+}
+
 module.exports = {
   readInput,
-  showMenu
+  showMenu,
+  pause
 }
