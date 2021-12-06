@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/mllimo/clima-app#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
     "inquirer": "^8.2.0"
   }
 }
