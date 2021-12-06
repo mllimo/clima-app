@@ -1,8 +1,8 @@
-const axios = require('axios');
+
 
 class Searches {
   history = [];
-
+  
   constructor() {
 
   }
@@ -16,21 +16,7 @@ class Searches {
   }
 
   async city(place = '') {
-    try {
-      const instance = axios.create({
-        baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?`,
-        params: this.paramsMapBox
-      });
-
-      const response = await instance.get();
-      console.log(response);
-
-      //this.history.push(place);
-
-    } catch (error) {
-      console.error(error);
-    }
-
+    
   }
 }
 
