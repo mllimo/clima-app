@@ -19,7 +19,8 @@ class Searches {
     return {
       'lat': `${lat}`,
       'lon': `${lng}`,
-      'appid': process.env.OPENWEATHERMAP_KEY
+      'appid': process.env.OPENWEATHERMAP_KEY,
+      'units': 'metric'
     }
   }
 
@@ -45,7 +46,7 @@ class Searches {
 
   async weather(lat, lng) {
     try {
-      const toCelsius = (temperature) => { return (temperature - 32) * 5 / 9 }
+
       const instance = axios.create({
         baseURL: 'https://api.openweathermap.org/data/2.5/weather?',
         params: this.paramsWeatherMap(lat, lng)
@@ -53,9 +54,9 @@ class Searches {
 
       const response = await instance.get();
       return {
-        'temp': toCelsius(response.data.main.temp).toFixed(2),
-        'temp_min': toCelsius(response.data.main.temp_min).toFixed(2),
-        'temp_max': toCelsius(response.data.main.temp_max).toFixed(2)
+        'temp': response.data.main.temp.toFixed(2),
+        'temp_min': response.data.main.temp_min.toFixed(2),
+        'temp_max': response.data.main.temp_max.toFixed(2)
       };
     } catch (err) {
       return err;

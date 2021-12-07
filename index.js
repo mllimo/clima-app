@@ -35,7 +35,6 @@ async function main() {
         console.log(place);
         search = searches.findFromHistory(place);
         showInformation(search);
-        // Mostrar info
         break;
     }
     if (option !== 0) await io.pause();
