@@ -35,6 +35,36 @@ async function showMenu() {
   return option;
 }
 
+async function list ( places = [] ) {
+
+  const choices = places.map( (tarea, i) => {
+
+      const idx = `${i + 1}.`.green;
+
+      return {
+          value: tarea.id,
+          name:  `${ idx } ${ tarea.name }`
+      }
+  });
+
+  choices.unshift({
+      value: '0',
+      name: '0.'.green + ' Cancel'
+  });
+
+  const question = [
+      {
+          type: 'list',
+          name: 'id',
+          message: 'Choose a place: ',
+          choices
+      }
+  ]
+
+  const { id } = await inquirer.prompt(question);
+  return id;
+}
+
 
 async function readInput(message) {
   const question = [
@@ -71,5 +101,6 @@ async function pause() {
 module.exports = {
   readInput,
   showMenu,
-  pause
+  pause,
+  list,
 }

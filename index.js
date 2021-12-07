@@ -11,7 +11,8 @@ async function main() {
       case 1:
         let place = await io.readInput('City: ');
         let places = await searches.city(place);
-        console.log(places);
+        place = await io.list(places);
+        console.log(place)
         break;
     }
     if (option !== 0) await io.pause();
