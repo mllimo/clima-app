@@ -45,7 +45,7 @@ class Searches {
 
   async weather(lat, lng) {
     try {
-      const toCelsius = (temperature) => {return (temperature - 32) * 5 / 9}
+      const toCelsius = (temperature) => { return (temperature - 32) * 5 / 9 }
       const instance = axios.create({
         baseURL: 'https://api.openweathermap.org/data/2.5/weather?',
         params: this.paramsWeatherMap(lat, lng)
@@ -57,10 +57,22 @@ class Searches {
         'temp_min': toCelsius(response.data.main.temp_min).toFixed(2),
         'temp_max': toCelsius(response.data.main.temp_max).toFixed(2)
       };
-    } catch (err){
+    } catch (err) {
       return err;
     }
   }
+
+  addToHistory(place, weather) {
+    if (this.history.find(element => element.id == place.id)) return this.findFromHistory(place.id);
+    const search = { name: place.name, id: place.id, 'place': place, 'weather': weather };
+    this.history.push(search);
+    return search;
+  }
+
+  findFromHistory(id) {
+    return this.history.find(element => element.id == id);
+  }
+
 
 }
 
