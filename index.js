@@ -1,4 +1,4 @@
-const { green } = require('colors');
+require('colors');
 const io = require('./helpers/io');
 const Searches = require('./helpers/searches');
 require('dotenv').config()
@@ -32,7 +32,6 @@ async function main() {
 
       case 2:
         place = await io.list(searches.history);
-        console.log(place);
         search = searches.findFromHistory(place);
         showInformation(search);
         break;
