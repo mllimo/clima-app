@@ -35,30 +35,30 @@ async function showMenu() {
   return option;
 }
 
-async function list ( places = [] ) {
+async function list(places = []) {
 
-  const choices = places.map( (place, i) => {
+  const choices = places.map((place, i) => {
 
-      const idx = `${i + 1}.`.green;
+    const idx = `${i + 1}.`.green;
 
-      return {
-          value: place.id,
-          name:  `${ idx } ${ place.name }`
-      }
+    return {
+      value: place.id,
+      name: `${idx} ${place.name}`
+    }
   });
 
   choices.unshift({
-      value: '0',
-      name: '0.'.green + ' Cancel'
+    value: '0',
+    name: '0.'.green + ' Cancel'
   });
 
   const question = [
-      {
-          type: 'list',
-          name: 'id',
-          message: 'Choose a place: ',
-          choices
-      }
+    {
+      type: 'list',
+      name: 'id',
+      message: 'Choose a place: ',
+      choices
+    }
   ]
 
   const { id } = await inquirer.prompt(question);
