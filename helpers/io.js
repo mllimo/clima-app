@@ -37,13 +37,13 @@ async function showMenu() {
 
 async function list ( places = [] ) {
 
-  const choices = places.map( (tarea, i) => {
+  const choices = places.map( (place, i) => {
 
       const idx = `${i + 1}.`.green;
 
       return {
-          value: tarea.id,
-          name:  `${ idx } ${ tarea.name }`
+          value: place.id,
+          name:  `${ idx } ${ place.name }`
       }
   });
 

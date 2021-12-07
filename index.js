@@ -24,6 +24,13 @@ async function main() {
         console.log('Temperature: ', `${weather.temp}C`);
         console.log('Minimum temperature: ', `${weather.temp_min}C`);
         console.log('Maximum temperature: ', `${weather.temp_max}C`);
+
+        searches.history.push({name: place.name, 'place': place, 'weather': weather});
+        break;
+
+      case 2:
+        await io.list(searches.history);
+        // Mostrar info
         break;
     }
     if (option !== 0) await io.pause();
